@@ -14,6 +14,9 @@ int main()
     cin>>quantityC;
     double total = (priceA*quantityA)+(priceB*quantityA)+(priceC*quantityC);
     cout<<" Total cost: $"<<total<<endl;
+    double finalToal=(total>200)?total*0.9:total;
+    cout<<" Total after discount:$"<<finalToal<<endl;
     return 0;
+
     
 }
