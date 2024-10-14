@@ -17,7 +17,7 @@ int main()
     double finalToal=(total>200)?total*0.9:total;
     cout<<" Total after discount:$"<<finalToal<<endl;
     double shipping =(finalToal<150)?15.0:0.0;
-    cout << " Total after discount :$"<<finalTotal+shipping<<endl;
+    cout << " Total after discount :$"<<finalToal+shipping<<endl;
     return 0;
 
     
