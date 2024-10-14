@@ -12,12 +12,12 @@ int main()
     cin>>quantityB;
     cout<<"Enter the quantity of Product C:";
     cin>>quantityC;
-    double total = (priceA*quantityA)+(priceB*quantityA)+(priceC*quantityC);
+    double total = (priceA*quantityA)+(priceB*quantityB)+(priceC*quantityC);
     cout<<" Total cost: $"<<total<<endl;
     double finalToal=(total>200)?total*0.9:total;
     cout<<" Total after discount:$"<<finalToal<<endl;
     double shipping =(finalToal<150)?15.0:0.0;
-    cout << " Total after discount :$"<<finalToal+shipping<<endl;
+    cout << " Total after discount  and shipping:$"<<finalToal +shipping<<endl;
     return 0;
 
     
