@@ -14,10 +14,15 @@ int main()
     cin>>quantityC;
     double total = (priceA*quantityA)+(priceB*quantityB)+(priceC*quantityC);
     cout<<" Total cost: $"<<total<<endl;
-    double finalToal=(total>200)?total*0.9:total;
+    double finalTotal=(total>200)?total*0.9:total;
     cout<<" Total after discount:$"<<finalToal<<endl;
     double shipping =(finalToal<150)?15.0:0.0;
-    cout << " Total after discount  and shipping:$"<<finalToal +shipping<<endl;
+    cout << " Total after discount  and shipping:$"<<finalTotal +shipping<<endl;
+    double totalWihtShiping=finalTotal+shipping;
+    int loyaltypoints =(totalWihtShiping>300)?50:20;
+    cout<<"Total after discount and shipping:$"<<totalWihtShiping<<endl;
+    cout<<"Loyalty points earned:"<<loyaltypoints<<endl;
+
     return 0;
 
     
