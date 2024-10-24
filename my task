@@ -1,0 +1,164 @@
+#include <iostream>
+#include <ctime>
+#include <string>
+
+using namespace std;
+
+int main() {
+    const double priceA = 10.0, priceB = 15.0, priceC = 20.0;
+    int stockA = 10, stockB = 10, stockC = 10;
+    int quantityA = 0, quantityB = 0, quantityC = 0;
+
+    cout << "Welcome to the ECommerce Application\n";
+    cout << "How many of Product A would you like to purchase? ";
+    cin >> quantityA;
+    cout << "How many of Product B would you like to purchase? ";
+    cin >> quantityB;
+    cout << "How many of Product C would you like to purchase? ";
+    cin >> quantityC;
+
+    double total = (priceA * quantityA) + (priceB * quantityB) + (priceC * quantityC);
+    cout << "Initial Total: $" << total << endl;
+
+  
+    int returnA, returnB, returnC;
+    cout << "Would you like to return any products? (Enter quantity for each, or 0 to skip)\n";
+    cout << "Product A: "; cin >> returnA;
+    cout << "Product B: "; cin >> returnB;
+    cout << "Product C: "; cin >> returnC;
+
+    if (returnA > quantityA) returnA = quantityA;
+    if (returnB > quantityB) returnB = quantityB;
+    if (returnC > quantityC) returnC = quantityC;
+
+    quantityA -= returnA;
+    quantityB -= returnB;
+    quantityC -= returnC;
+
+    total = (priceA * quantityA) + (priceB * quantityB) + (priceC * quantityC);
+    cout << "Total after returns: $" << total << endl;
+
+   
+    int loyaltyPoints = 50; 
+    char redeemPoints;
+    cout << "You have " << loyaltyPoints << " loyalty points.\n";
+    cout << "Would you like to redeem your loyalty points for a discount? (y/n): ";
+    cin >> redeemPoints;
+
+    if (redeemPoints == 'y' || redeemPoints == 'Y') {
+        double pointsDiscount = (loyaltyPoints > total) ? total : loyaltyPoints;
+        total -= pointsDiscount;
+        cout << "You have redeemed $" << pointsDiscount << " from loyalty points.\n";
+    }
+
+    
+    char giftWrap;
+    cout << "Would you like to add gift wrapping for $5.00? (y/n): ";
+    cin >> giftWrap;
+
+    if (giftWrap == 'y' || giftWrap == 'Y') {
+        total += 5.0;
+        cout << "Gift wrapping added.\n";
+    }
+
+  
+    double taxRateA = 0.05, taxRateB = 0.08, taxRateC = 0.10;
+    double taxA = priceA * quantityA * taxRateA;
+    double taxB = priceB * quantityB * taxRateB;
+    double taxC = priceC * quantityC * taxRateC;
+    double totalTax = taxA + taxB + taxC;
+
+    total += totalTax;
+
+    cout << "Tax for Product A: $" << taxA << endl;
+    cout << "Tax for Product B: $" << taxB << endl;
+    cout << "Tax for Product C: $" << taxC << endl;
+    cout << "Total tax: $" << totalTax << endl;
+
+  
+    std::time_t t = std::time(0);
+    std::tm* now = std::localtime(&t);
+    cout << "Order placed on: " << (now->tm_mon + 1) << '/' 
+         << now->tm_mday << '/' << (now->tm_year + 1900) << " at " 
+         << now->tm_hour << ':' << (now->tm_min < 10 ? "0" : "") << now->tm_min << endl;
+
+    
+    int ratingA, ratingB, ratingC;
+    string feedbackA, feedbackB, feedbackC;
+
+    cout << "Please rate Product A (1-5): "; cin >> ratingA;
+    cout << "Please leave feedback for Product A: "; cin.ignore(); getline(cin, feedbackA);
+    
+    cout << "Please rate Product B (1-5): "; cin >> ratingB;
+    cout << "Please leave feedback for Product B: "; cin.ignore(); getline(cin, feedbackB);
+    
+    cout << "Please rate Product C (1-5): "; cin >> ratingC;
+    cout << "Please leave feedback for Product C: "; cin.ignore(); getline(cin, feedbackC);
+
+    cout << "\n--- Product Ratings ---\n";
+    cout << "Product A: " << ratingA << "/5\n";
+    cout << "Product B: " << ratingB << "/5\n";
+    cout << "Product C: " << ratingC << "/5\n";
+
+    cout << "\n--- Feedback ---\n";
+    cout << "Feedback for Product A: " << feedbackA << "\n";
+    cout << "Feedback for Product B: " << feedbackB << "\n";
+    cout << "Feedback for Product C: " << feedbackC << "\n";
+
+   
+    char replenishStock;
+    cout << "Would you like to replenish stock for any products? (y/n): ";
+    cin >> replenishStock;
+
+    if (replenishStock == 'y' || replenishStock == 'Y') {
+        int replenishA, replenishB, replenishC;
+        cout << "Enter stock to add for Product A: "; cin >> replenishA;
+        cout << "Enter stock to add for Product B: "; cin >> replenishB;
+        cout << "Enter stock to add for Product C: "; cin >> replenishC;
+
+        stockA += replenishA;
+        stockB += replenishB;
+        stockC += replenishC;
+
+        cout << "Stock updated.\n";
+        cout << "Product A stock: " << stockA << "\n";
+        cout << "Product B stock: " << stockB << "\n";
+        cout << "Product C stock: " << stockC << "\n";
+    }
+
+    
+    double shippingCost = 5.0;
+    string couponCode;
+    cout << "Enter a promo code (if any): ";
+    cin >> couponCode;
+
+    if (couponCode == "FREESHIP") {
+        shippingCost = 0.0;
+        cout << "Free shipping applied.\n";
+    } else if (couponCode == "SAVE10") {
+        total -= 10.0;
+        cout << "Coupon discount applied: $10.0\n";
+    }
+
+    total += shippingCost;
+    cout << "Final Total after shipping: $" << total << endl;
+
+  
+    char splitPayment;
+    cout << "Would you like to split payment between two methods? (y/n): ";
+    cin >> splitPayment;
+
+    if (splitPayment == 'y' || splitPayment == 'Y') {
+        double amountCard, amountPayPal;
+        cout << "Enter amount to pay by credit card: "; cin >> amountCard;
+        cout << "Enter amount to pay by PayPal: "; cin >> amountPayPal;
+
+        if (amountCard + amountPayPal == total) {
+            cout << "Payment split successfully between Credit Card and PayPal.\n";
+        } else {
+            cout << "Error: Split amounts do not match the final total.\n";
+        }
+    }
+
+    return 0;
+}
