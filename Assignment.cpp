@@ -15,8 +15,8 @@ int main()
     double total = (priceA*quantityA)+(priceB*quantityB)+(priceC*quantityC);
     cout<<" Total cost: $"<<total<<endl;
     double finalTotal=(total>200)?total*0.9:total;
-    cout<<" Total after discount:$"<<finalToal<<endl;
-    double shipping =(finalToal<150)?15.0:0.0;
+    cout<<" Total after discount:$"<<finalTotal<<endl;
+    double shipping =(finalTotal<150)?15.0:0.0;
     cout << " Total after discount  and shipping:$"<<finalTotal +shipping<<endl;
     double totalWihtShiping=finalTotal+shipping;
     int loyaltypoints =(totalWihtShiping>300)?50:20;
