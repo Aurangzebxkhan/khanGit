@@ -3,6 +3,8 @@ using namespace std;
 
 int main() {
     int option;
+    string feedback;
+
     
     
     cout << "Customer Support Menu" << endl;
@@ -20,14 +22,22 @@ int main() {
     {
         case 1:
             cout << "Connecting to Billing Department..." << endl;
+            cout<< endl;
+            cout<< " Welcome to billing department"<<endl;
             break;
         case 2:
             cout << "Connecting to Technical Support..." << endl;
+            cout<< endl;
+            cout<< " Welcome to  Technical Support"<<endl;
             break;
         case 3:
             cout << "Connecting to Account Information..." << endl;
+            cout<< endl;
+            cout<< " Welcome to Account Information"<<endl;
             break;
         case 4:
+        cout<<"Give us your feedback"<<endl;
+        cin>>feedback;
             cout << "We appreciate your feedback!" << endl;
             break;
         case 5:
